@@ -1,0 +1,17 @@
+{
+    "name": "root/geospy",
+    "description": "Map of hacker place",
+    "authors": [
+        {
+            "name": "RoGeR",
+            "email": "karoly.robert.das@gmail.com"
+        }
+    ],
+    "require": {
+      "sergeytsalkov/meekrodb": "dev-master",
+      "dannyvankooten/php-router": "dev-master"
+    },
+    "require-dev": {
+        "firephp/firephp-core": "dev-master"
+    }
+}
