@@ -25,6 +25,10 @@ try{
       '_controller' => 'IndexLayout::prev',
       'methods' => 'POST'
   )));
+  $collection->attachRoute(new Route('/getdata', array(
+      '_controller' => 'IndexLayout::getIPData',
+      'methods' => 'POST'
+  )));
 
 
   $router = new Router($collection);

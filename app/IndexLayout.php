@@ -43,9 +43,14 @@ class IndexLayout {
         echo "{\"day\":\"".date("Y-m-d",strtotime($sdate))."\",\"geodata\":".$res."}";
     }
 
+    public static function getIPData(){
+        $_SESSION["ip"] = $_POST["ip"];
+        include "views/ipinfo.php";
+    }
+
     private static function getInterval($s,$e){
       try{
-        $result = DB::query("select distinct hip.geodata as geodata from hackers_ip as hip inner join hackers_log as hl where hip.ip = hl.ip and hl.date > \"".$s."\" and hl.date < \"".$e."\"");
+        $result = DB::query("select distinct hip.ip,hip.geodata as geodata from hackers_ip as hip inner join hackers_log as hl where hip.ip = hl.ip and hl.date > \"".$s."\" and hl.date < \"".$e."\"");
         $response = "[";
         $first = true;
         foreach($result as $row){
