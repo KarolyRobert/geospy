@@ -6,20 +6,42 @@ class IndexLayout {
         include 'views/main_view.php';
     }
 
-    public static function init() {
+    public static function all() {
       try{
          $result = DB::query("select min(date) from hackers_log");
          $time = strtotime($result[0]["min(date)"]);
          $sdate = date("Y-m-d 00:00:00",$time);
          $_SESSION['date'] = $sdate;
          $time = strtotime($sdate);
-         $tomorrow = mktime(0,0,0,date("m",$time),date("d",$time)+1,date("Y",$time));
+         $tomorrow = mktime(0,0,0,date("m"),date("d")+1,date("Y"));
          $edate =   date("Y-m-d 00:00:00",$tomorrow);
          $res = IndexLayout::getInterval($sdate,$edate);
-         echo "{\"day\":\"".date("Y-m-d",strtotime($sdate))."\",\"geodata\":".$res."}";
+         echo "{\"day\":\"Összes\",\"geodata\":".$res."}";
         }catch (Exception $ex) {
             fb($ex,__CLASS__.'::'.__FUNCTION__);
         }
+    }
+    public static function first(){
+      $result = DB::query("select min(date) from hackers_log");
+      $time = strtotime($result[0]["min(date)"]);
+      $sdate = date("Y-m-d 00:00:00",$time);
+      $_SESSION['date'] = $sdate;
+      $time = strtotime($sdate);
+      $tomorrow = mktime(0,0,0,date("m",$time),date("d",$time)+1,date("Y",$time));
+      $edate =   date("Y-m-d 00:00:00",$tomorrow);
+      $res = IndexLayout::getInterval($sdate,$edate);
+      echo "{\"day\":\"".date("Y-m-d",strtotime($sdate))."\",\"geodata\":".$res."}";
+    }
+    public static function last(){
+      $result = DB::query("select max(date) from hackers_log");
+      $time = strtotime($result[0]["max(date)"]);
+      $sdate = date("Y-m-d 00:00:00",$time);
+      $_SESSION['date'] = $sdate;
+      $time = strtotime($sdate);
+      $tomorrow = mktime(0,0,0,date("m",$time),date("d",$time)+1,date("Y",$time));
+      $edate =   date("Y-m-d 00:00:00",$tomorrow);
+      $res = IndexLayout::getInterval($sdate,$edate);
+      echo "{\"day\":\"".date("Y-m-d",strtotime($sdate))."\",\"geodata\":".$res."}";
     }
     public static function next(){
         $d = $_SESSION['date'];

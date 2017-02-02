@@ -13,7 +13,7 @@
       <div id="controll"></div>
       <script src="lib/jquery/jquery.min.js"></script>
       <script src="lib/markercluster.js"></script>
-      <script src="js/geospy.js?0017"></script>
+      <script src="js/geospy.js?0019"></script>
       <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB7AYXiZNlEtDYzmgUh6Iz9pJU7e-ozrl0&callback=initMap" async defer></script>
     </body>
 </html>

@@ -13,8 +13,16 @@ try{
       'methods' => 'GET'
   )));
 
-  $collection->attachRoute(new Route('/init', array(
-      '_controller' => 'IndexLayout::init',
+  $collection->attachRoute(new Route('/all', array(
+      '_controller' => 'IndexLayout::all',
+      'methods' => 'POST'
+  )));
+  $collection->attachRoute(new Route('/first', array(
+      '_controller' => 'IndexLayout::first',
+      'methods' => 'POST'
+  )));
+  $collection->attachRoute(new Route('/last', array(
+      '_controller' => 'IndexLayout::last',
       'methods' => 'POST'
   )));
   $collection->attachRoute(new Route('/next', array(
